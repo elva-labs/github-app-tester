@@ -1,0 +1,16 @@
+name: Test approval
+on: [workflow_dispatch]
+
+jobs:
+  deploy-test:
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - run: echo hello
+      
+  deploy-prod:
+    runs-on: ubuntu-latest
+    needs: deploy-test
+    environment: prod
+    steps:
+      - run: echo hello
